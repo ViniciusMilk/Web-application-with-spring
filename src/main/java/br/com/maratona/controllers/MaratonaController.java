@@ -59,7 +59,7 @@ public class MaratonaController {
     }
 
     @GetMapping(value = "/participante/{id}")
-    public ModelAndView getMethodName(@PathVariable Long id) {
+    public ModelAndView getMaratonaDetalhes(@PathVariable Long id) {
         Optional<Maratona> participant = participantRepository.findById(id);
 
         if (participant.isPresent()) {
@@ -69,6 +69,25 @@ public class MaratonaController {
         } else {
             return new ModelAndView("redirect:/participantes");
         }
+    }
+
+    @GetMapping(value = "/editar/{id}")
+    public ModelAndView getEditar(@PathVariable Long id) {
+        Optional<Maratona> participant = participantRepository.findById(id);
+
+        if (participant.isPresent()) {
+            ModelAndView mv = new ModelAndView("maratona/editar");
+            mv.addObject("participant", participant.get());
+            return mv;
+        } else {
+            return new ModelAndView("redirect:/participantes");
+        }
+    }
+
+    @PostMapping(value = "/participant/editar")
+    public String postEditar(Maratona participant) {
+        participantRepository.save(participant);
+        return "redirect:/participantes";
     }
 
 }

@@ -100,4 +100,11 @@ public class Maratona {
         this.badge = badge;
     }
 
+    @Override
+    public String toString() {
+        // TODO Auto-generated method stub
+        return "Maratona{" + "id=" + id + ",name='" + name + '\'' + ",description='" + description + '\'' + ",age="
+                + age + ",sex=" + sex + '\'' + ",modality=" + modality + '\'' + ",badge=" + badge + '\'';
+    }
+
 }

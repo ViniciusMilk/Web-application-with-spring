@@ -46,7 +46,7 @@
               <a class="navbar-brand" href="/">Maratona +Saúde</a>
             </div>
             <div>
-              <a class="text-white m-3" href="/">Voltar</a>
+              <a class="text-white m-3" href="/">Home</a>
             </div>
           </div>
         </nav>
@@ -69,9 +69,28 @@
               th:text="${participant.description}"
             ></h6>
             <ul>
-              <li>Data: <span th:text="${participant.age}"></span></li>
-              <li>Status: <span th:text="${participant.modality}"></span></li>
+              <li>
+                Data de Nascimento:
+                <span
+                  th:text="${#dates.format(participant.age, 'dd-MM-YYY')}"
+                ></span>
+              </li>
+              <li>
+                Modalidade: <span th:text="${participant.modality}"></span>
+              </li>
             </ul>
+          </div>
+          <div class="card-footer d-flex justify-content-between">
+            <a
+              class="btn btn-primary"
+              th:href="@{/editar/{id} (id=${participant.id})}"
+              >Editar</a
+            >
+            <a
+              class="btn btn-primary"
+              th:href="@{/excluir/{id} (id=${participant.id})}"
+              >Excluir</a
+            >
           </div>
         </div>
       </main>
